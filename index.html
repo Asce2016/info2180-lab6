@@ -9,7 +9,7 @@
 
 <script>
 
-document.getElementById("search").addEventLister("click", function(){
+document.getElementById("search").addEventListener("click", function(){
 
   if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
       httpRequest = new XMLHttpRequest();
@@ -30,7 +30,7 @@ document.getElementById("search").addEventLister("click", function(){
         }
         };
 
-        httpRequest.open('GET',"http://localhost/info2180-lab6/request.php", true);
+        httpRequest.open('GET',"http://localhost/info2180-lab6/request.php?q=definition", true);
         httpRequest.send();
 
 
@@ -40,13 +40,6 @@ document.getElementById("search").addEventLister("click", function(){
 
 
 
-
-
-
-
-
-
-}
 
 
 
