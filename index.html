@@ -1,16 +1,36 @@
 <!DOCTYPE html >
-<head><h1><strong> Ajax</strong></h1> </head>
+<head>
+
+<link rel = "stylesheet" type = "text/css" href = "index.css">
+</head>
 <title> Lab 6 </title>
 <body>
 
-<p> Press this button <p/>
+
+<div id= "heading"> Dictionary </div>
+
+
+<div id="body">
+  <p> Please type the word your looking for down below </p>
+  <input type = "text"  id="Definition" placeholder="Enter word  Here">
 
 <button id="search"> Search </button>
 
+
+<h1> Result </h1>
+<div id="result">
+</div>
+
+
+</div>
+
+
+
+
+
 <script>
-
 document.getElementById("search").addEventListener("click", function(){
-
+  //console.log('test');
   if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
       httpRequest = new XMLHttpRequest();
   } else if (window.ActiveXObject) { // IE 6 and older
@@ -18,35 +38,28 @@ document.getElementById("search").addEventListener("click", function(){
 };
 
 
+
+var info = document.getElementById("Definition").value
+
       httpRequest.onreadystatechange = function() {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
          if (httpRequest.status == 200) {
-          alert(httpRequest.responseText);
-        } else{
 
-          alert("error with request");
+               var Result = httpRequest.responseText;
+               document.getElementById("result").innerHTML = Result;
+          } else {
 
+            alert("error with request");
+
+          }
         }
-        }
-        };
+      };
 
-        httpRequest.open('GET',"http://localhost/info2180-lab6/request.php?q=definition", true);
+        httpRequest.open('GET',"http://localhost/info2180-lab6/request.php?q=" + info, true);
         httpRequest.send();
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 
