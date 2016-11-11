@@ -1,9 +1,11 @@
 <!DOCTYPE html >
+<html>
 <head>
-
-<link rel = "stylesheet" type = "text/css" href = "index.css">
-</head>
 <title> Lab 6 </title>
+<link rel = "stylesheet" type = "text/css" href = "index.css">
+<script src="index.js" type="text/javascript"></script>
+</head>
+
 <body>
 
 
@@ -12,9 +14,10 @@
 
 <div id="body">
   <p> Please type the word your looking for down below </p>
-  <input type = "text"  id="Definition" placeholder="Enter word  Here">
+  <input type = "text"  id="Definition" placeholder="Enter word Here">
 
 <button id="search"> Search </button>
+<button id = "All">Get all Defintion</button>
 
 
 <h1> Result </h1>
@@ -23,51 +26,6 @@
 
 
 </div>
-
-
-
-
-
-<script>
-document.getElementById("search").addEventListener("click", function(){
-  //console.log('test');
-  if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
-      httpRequest = new XMLHttpRequest();
-  } else if (window.ActiveXObject) { // IE 6 and older
-      httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-};
-
-
-
-var info = document.getElementById("Definition").value
-
-      httpRequest.onreadystatechange = function() {
-        if (httpRequest.readyState === XMLHttpRequest.DONE) {
-         if (httpRequest.status == 200) {
-
-               var Result = httpRequest.responseText;
-               document.getElementById("result").innerHTML = Result;
-          } else {
-
-            alert("error with request");
-
-          }
-        }
-      };
-
-        httpRequest.open('GET',"http://localhost/info2180-lab6/request.php?q=" + info, true);
-        httpRequest.send();
-
-
-});
-</script>
-
-
-
-
-
-
-
 
 
 
